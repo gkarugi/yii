@@ -8,9 +8,6 @@
  * @license http://www.yiiframework.com/license/
  */
 
-$dotenv = Dotenv\Dotenv::create(__DIR__);
-$dotenv->load();
-
 defined('YII_DEBUG') or define('YII_DEBUG', true);
 defined('YII_ENV') or define('YII_ENV', 'dev');
 
