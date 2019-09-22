@@ -13,6 +13,8 @@ use Yii;
  */
 class Branch extends \yii\db\ActiveRecord
 {
+    const SCENARIO_CREATE = 'create';
+
     /**
      * {@inheritdoc}
      */
@@ -27,9 +29,17 @@ class Branch extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['headquarters_id'], 'integer'],
-            [['name'], 'string', 'max' => 255],
+            [['headquarters_id'], 'integer', 'required'],
+            [['name'], 'string', 'required', 'max' => 255],
         ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['create'] = ['name','headquarters_id'];
+
+        return $scenarios;
     }
 
     /**

@@ -14,6 +14,8 @@ use Yii;
  */
 class OrderDetail extends \yii\db\ActiveRecord
 {
+    const SCENARIO_CREATE = 'create';
+
     /**
      * {@inheritdoc}
      */

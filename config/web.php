@@ -47,17 +47,16 @@ $config = [
         ],
         'db' => $db,
 
-//        'urlManager' => [
-//            'enablePrettyUrl' => true,
-//            'showScriptName' => false,
-//            'enableStrictParsing' => true,
-//            'rules' => [
-//                ['class' => 'yii\rest\UrlRule', 'controller' => 'product'],
-//                ['class' => 'yii\rest\UrlRule', 'controller' => 'supplier'],
-//                ['class' => 'yii\rest\UrlRule', 'controller' => 'delivery'],
-//                ['class' => 'yii\rest\UrlRule', 'controller' => 'order'],
-//            ],
-//        ],
+        'urlManager' => [
+            'enablePrettyUrl' => true,
+            'showScriptName' => false,
+            'enableStrictParsing' => true,
+            'rules' => [
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'product'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'supplier'],
+                ['class' => 'yii\rest\UrlRule', 'controller' => 'order'],
+            ],
+        ],
     ],
     'params' => $params,
 ];

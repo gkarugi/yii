@@ -2,14 +2,15 @@
 
 namespace app\controllers;
 
-use app\models\Product;
+use app\models\Supplier;
 use yii\data\ActiveDataProvider;
 use yii\rest\Controller;
 use yii\web\NotFoundHttpException;
 
-class ProductController extends Controller
+class SupplierController extends Controller
 {
-    public $modelClass = 'app\models\Product';
+    public $modelClass = 'app\models\Supplier';
+
     public $serializer = [
         'class' => 'yii\rest\Serializer',
         'collectionEnvelope' => 'items',
@@ -18,13 +19,13 @@ class ProductController extends Controller
     public function actionIndex()
     {
         return new ActiveDataProvider([
-            'query' => Product::find(),
+            'query' => Supplier::find(),
         ]);
     }
 
     public function actionView($id)
     {
-        $model = Product::findOne($id);
+        $model = Supplier::findOne($id);
 
         if ($model === null) {
             throw new NotFoundHttpException();
@@ -37,7 +38,7 @@ class ProductController extends Controller
 
     public function actionCreate()
     {
-        $model = new Product;
+       $model = new Supplier;
         $model->attributes = \Yii::$app->request->post();
 
         if ($model->validate()) {
@@ -56,7 +57,7 @@ class ProductController extends Controller
 
     public function actionUpdate($id)
     {
-        $model = Product::findOne($id);
+        $model = Supplier::findOne($id);
 
         if ($model === null) {
             throw new NotFoundHttpException();
@@ -80,7 +81,7 @@ class ProductController extends Controller
 
     public function actionDelete($id)
     {
-        $model = Product::findOne($id);
+        $model = Supplier::findOne($id);
 
         if ($model === null) {
             throw new NotFoundHttpException();

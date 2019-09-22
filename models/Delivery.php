@@ -13,6 +13,8 @@ use Yii;
  */
 class Delivery extends \yii\db\ActiveRecord
 {
+    const SCENARIO_CREATE = 'create';
+
     /**
      * {@inheritdoc}
      */
@@ -27,9 +29,17 @@ class Delivery extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['delivery_date'], 'safe'],
-            [['supplier_id'], 'integer'],
+            [['delivery_date'], 'safe', 'required'],
+            [['supplier_id'], 'integer', 'required'],
         ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['create'] = ['delivery_date', 'supplier_id'];
+
+        return $scenarios;
     }
 
     /**

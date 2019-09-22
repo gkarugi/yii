@@ -13,6 +13,8 @@ use Yii;
  */
 class Product extends \yii\db\ActiveRecord
 {
+    const SCENARIO_CREATE = 'create';
+
     /**
      * {@inheritdoc}
      */
@@ -27,9 +29,19 @@ class Product extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
+            [['supplier_id'], 'required'],
             [['supplier_id'], 'integer'],
+            [['name'], 'required'],
             [['name'], 'string', 'max' => 255],
         ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['create'] = ['name', 'supplier_id'];
+
+        return $scenarios;
     }
 
     /**

@@ -13,6 +13,8 @@ use Yii;
  */
 class Order extends \yii\db\ActiveRecord
 {
+    const SCENARIO_CREATE = 'create';
+
     /**
      * {@inheritdoc}
      */
@@ -27,9 +29,19 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['order_date'], 'safe'],
+            [['order_date'], 'required'],
+            [['order_date'], 'date', 'format' => 'php:Y-m-d'],
+            [['headquarters_id'], 'required'],
             [['headquarters_id'], 'integer'],
         ];
+    }
+
+    public function scenarios()
+    {
+        $scenarios = parent::scenarios();
+        $scenarios['create'] = ['order_date', 'headquarters_id'];
+
+        return $scenarios;
     }
 
     /**
